@@ -1,0 +1,44 @@
+nginx conf file:
+    > /usr/local/etc/nginx/nginx.conf
+
+nginx log file:
+    /var/log/nginx/nginx_error.log
+
+restart nginx:
+    > sudo nginx -s stop && sudo nginx
+
+start uwsgi
+    > uwsgi --ini slack_apps.ini
+
+uwsgi log file:
+    /var/log/uwsgi/log.log
+
+restart uwsgi:
+    > sudo /bin/launchctl unload -S Aqua /Library/LaunchDaemons/com.solon.uwsgi.plist
+    > sudo /bin/launchctl load /Library/LaunchDaemons/com.solon.uwsgi.plist
+
+add superuser:
+    > python3 manage.py createsuperuser
+
+run test:
+    > python3 manage.py test
+
+collect staticfiles: (to retrieve all static files from STATICFILES_DIRS, and put it into STATIC_ROOT)
+    > python3 manage.py collectstatic
+
+to allow CSRF problem
+    > pip3 install django-cors-middleware
+    > add corsheaders.middleware.CorsMiddleware into settings.py, and set "CORS_ORIGIN_ALLOW_ALL = True"
+
+frontend project:
+    create
+        > vue-init webpack frontend
+    run webpack to build package into dist folder
+        > npm install
+        > npm run build
+    run dev
+        > npm run dev
+
+lunch_foundation project:
+    run server
+        > python3 manage.py runserver

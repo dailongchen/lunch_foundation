@@ -80,7 +80,7 @@ class Slack:
             headers = {
                 'Content-Type': 'application/json'
             }
-            requestURL = "https://hooks.slack.com/services/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"
+            requestURL = "https://hooks.slack.com/services/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"
             postRequest = urllib.request.Request(requestURL,
                                                  data=json.dumps(message).encode('utf8'),
                                                  headers=headers,
